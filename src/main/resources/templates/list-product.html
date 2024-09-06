@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saefullohmaslul/java-spring-boot-upskill/list-product-paging.css">
+</head>
+<body>
+<div class="container">
+    <h1>Product List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="product: ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <a th:href="@{/products(page=${currentPage - 1})}" th:classappend="${currentPage == 1} ? 'disabled'" th:if="${currentPage > 1}">
+            &laquo; Previous
+        </a>
+
+        <span>
+            Page <span th:text="${currentPage}"></span> of <span th:text="${totalPage}"></span>
+        </span>
+
+        <a th:href="@{/products(page=${currentPage + 1})}" th:classappend="${currentPage == totalPage}" th:if="${currentPage < totalPage}">
+            Next &raquo;
+        </a>
+    </div>
+</div>
+</body>
+</html>
