@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saefullohmaslul/java-spring-boot-upskill/upload.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload File</h2>
+        <div th:if="${message}" class="alert alert-info" th:text="${message}"></div>
+
+        <form th:action="@{/upload}" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="file" class="form-label">Pilih gambar dengan max-size 1MB</label>
+                <input type="file" name="file" class="form-control" id="file" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
